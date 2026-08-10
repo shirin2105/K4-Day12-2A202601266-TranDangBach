@@ -10,7 +10,6 @@
 | Mã học viên | 2A202601266 |
 | Repo | https://github.com/shirin2105/K4-Day12-2A202601266-TranDangBach |
 
-
 ## Service
 
 | Mục | Nội dung |
@@ -62,7 +61,6 @@ for i in $(seq 1 15); do
     -H "X-Client-Id: sv-test" \
     -d '{"message":"test"}'
 done; echo
-
 ```
 
 ## Kết Quả Chạy Thật
@@ -93,11 +91,3 @@ content-type: application/json
 
 - `screenshots/dashboard.png` — trang quản lý service trên platform Render
 - `screenshots/healthz.png` — kết quả gọi `/healthz` từ cURL/trình duyệt
-
----
-
-## Nếu Dùng Phương Án Dự Phòng
-
-Phương án dự phòng được kích hoạt qua `LOCAL_FALLBACK=true`:
-- Đã chạy stack bằng `docker compose up -d` và `fakeredis` trong RAM trên môi trường local.
-- Đã kiểm tra đầy đủ liveness `/healthz`, readiness `/readyz`, và xác thực `/chat`.

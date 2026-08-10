@@ -15,7 +15,7 @@
 
 | Mục | Nội dung |
 |-----|----------|
-| Public URL | https://day12-chat.onrender.com |
+| Public URL | https://day12-chat-t07h.onrender.com |
 | Platform | Render |
 | Ngày deploy | 2026-08-10 |
 
@@ -37,18 +37,18 @@ Ghi tên biến và **nguồn giá trị**, không ghi giá trị:
 
 ```bash
 # 1. Liveness — mong đợi 200 {"status":"ok"}
-curl -i https://day12-chat.onrender.com/healthz
+curl -i https://day12-chat-t07h.onrender.com/healthz
 
 # 2. Readiness — mong đợi 200 {"status":"ready"} (đã nối được Redis)
-curl -i https://day12-chat.onrender.com/readyz
+curl -i https://day12-chat-t07h.onrender.com/readyz
 
 # 3. Không có token — mong đợi 401 kèm header WWW-Authenticate
-curl -i -X POST https://day12-chat.onrender.com/chat \
+curl -i -X POST https://day12-chat-t07h.onrender.com/chat \
   -H "Content-Type: application/json" \
   -d '{"message":"Hello"}'
 
 # 4. Có token — mong đợi 200 kèm câu trả lời
-curl -i -X POST https://day12-chat.onrender.com/chat \
+curl -i -X POST https://day12-chat-t07h.onrender.com/chat \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $API_TOKEN" \
   -H "X-Client-Id: sv-test" \
@@ -56,12 +56,13 @@ curl -i -X POST https://day12-chat.onrender.com/chat \
 
 # 5. Rate limit — gọi 15 lần, những lần cuối phải trả 429
 for i in $(seq 1 15); do
-  curl -s -o /dev/null -w "%{http_code} " -X POST https://day12-chat.onrender.com/chat \
+  curl -s -o /dev/null -w "%{http_code} " -X POST https://day12-chat-t07h.onrender.com/chat \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $API_TOKEN" \
     -H "X-Client-Id: sv-test" \
     -d '{"message":"test"}'
 done; echo
+
 ```
 
 ## Kết Quả Chạy Thật
